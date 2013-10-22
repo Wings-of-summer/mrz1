@@ -1,0 +1,9 @@
+C:\Asya\МРЗ\Lab1MRZ\FirstLabMRZ\FirstLabMRZ\bin\Debug\FirstLabMRZ.exe.config
+C:\Asya\МРЗ\Lab1MRZ\FirstLabMRZ\FirstLabMRZ\bin\Debug\FirstLabMRZ.exe
+C:\Asya\МРЗ\Lab1MRZ\FirstLabMRZ\FirstLabMRZ\bin\Debug\FirstLabMRZ.pdb
+C:\Asya\МРЗ\Lab1MRZ\FirstLabMRZ\FirstLabMRZ\obj\Debug\FirstLabMRZ.csprojResolveAssemblyReference.cache
+C:\Asya\МРЗ\Lab1MRZ\FirstLabMRZ\FirstLabMRZ\obj\Debug\FirstLabMRZ.Properties.Resources.resources
+C:\Asya\МРЗ\Lab1MRZ\FirstLabMRZ\FirstLabMRZ\obj\Debug\FirstLabMRZ.csproj.GenerateResource.Cache
+C:\Asya\МРЗ\Lab1MRZ\FirstLabMRZ\FirstLabMRZ\obj\Debug\FirstLabMRZ.exe
+C:\Asya\МРЗ\Lab1MRZ\FirstLabMRZ\FirstLabMRZ\obj\Debug\FirstLabMRZ.pdb
+c:\Asya\МРЗ\Lab1MRZ\FirstLabMRZ\FirstLabMRZ\obj\Debug\FirstLabMRZ.ImageArchiverForm.resources
