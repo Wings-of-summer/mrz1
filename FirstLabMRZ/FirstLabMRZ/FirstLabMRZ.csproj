@@ -51,6 +51,7 @@
     <Compile Include="ImageArchiverForm.Designer.cs">
       <DependentUpon>ImageArchiverForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ImageRectangle.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ImageArchiverForm.resx">
