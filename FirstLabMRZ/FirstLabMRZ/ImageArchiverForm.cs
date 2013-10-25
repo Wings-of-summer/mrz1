@@ -37,7 +37,15 @@ namespace FirstLabMRZ
 
         private void compressImageToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            string nText = nTextBox.Text;
+            string mText = mTextBox.Text;
+
+            int n = Int32.Parse(nText);
+            int m = Int32.Parse(mText);
+
             Image image = imageBox.Image;
+            ImageArchiver imageArchiver = new ImageArchiver(image);
+            imageArchiver.CompressImage(n, m);
         }
     }
 }

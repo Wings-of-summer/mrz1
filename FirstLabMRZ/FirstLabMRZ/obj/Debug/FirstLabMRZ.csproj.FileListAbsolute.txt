@@ -7,3 +7,12 @@ C:\Asya\МРЗ\Lab1MRZ\FirstLabMRZ\FirstLabMRZ\obj\Debug\FirstLabMRZ.csproj.Gene
 C:\Asya\МРЗ\Lab1MRZ\FirstLabMRZ\FirstLabMRZ\obj\Debug\FirstLabMRZ.exe
 C:\Asya\МРЗ\Lab1MRZ\FirstLabMRZ\FirstLabMRZ\obj\Debug\FirstLabMRZ.pdb
 c:\Asya\МРЗ\Lab1MRZ\FirstLabMRZ\FirstLabMRZ\obj\Debug\FirstLabMRZ.ImageArchiverForm.resources
+c:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabMRZ\bin\Debug\FirstLabMRZ.exe.config
+c:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabMRZ\obj\Debug\FirstLabMRZ.exe
+c:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabMRZ\obj\Debug\FirstLabMRZ.pdb
+c:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabMRZ\bin\Debug\FirstLabMRZ.exe
+c:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabMRZ\bin\Debug\FirstLabMRZ.pdb
+c:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabMRZ\obj\Debug\FirstLabMRZ.csprojResolveAssemblyReference.cache
+c:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabMRZ\obj\Debug\FirstLabMRZ.ImageArchiverForm.resources
+c:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabMRZ\obj\Debug\FirstLabMRZ.Properties.Resources.resources
+c:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabMRZ\obj\Debug\FirstLabMRZ.csproj.GenerateResource.Cache
