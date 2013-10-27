@@ -9,8 +9,7 @@ namespace FirstLabMRZ
 {
     class ImageRectangle
     {
-        public double[, ,] ConvertedPixelsMatrix { get; set; }
-        public double[] StandardVector { get; set; }
+        public ImagePixel[,] PixelsMatrix { get; set; }
 
         public int N { get; set; }
         public int M { get; set; }
@@ -20,7 +19,6 @@ namespace FirstLabMRZ
             this.N = n;
             this.M = m;
         }
-
 
     }
 }

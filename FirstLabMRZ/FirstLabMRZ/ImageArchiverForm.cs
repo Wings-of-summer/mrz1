@@ -40,12 +40,17 @@ namespace FirstLabMRZ
             string nText = nTextBox.Text;
             string mText = mTextBox.Text;
 
+            if (nText.Equals(String.Empty) && mText.Equals(String.Empty)) 
+            {
+                return;
+            }
+            
             int n = Int32.Parse(nText);
             int m = Int32.Parse(mText);
 
             Image image = imageBox.Image;
             ImageArchiver imageArchiver = new ImageArchiver(image);
-            imageArchiver.CompressImage(n, m);
+            compressedImageBox.Image = imageArchiver.CompressImage(n, m);
         }
     }
 }
