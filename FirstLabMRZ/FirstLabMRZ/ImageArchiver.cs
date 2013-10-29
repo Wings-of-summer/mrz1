@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MathNet.Numerics.Distributions;
+using MathNet.Numerics.LinearAlgebra.Double;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -17,7 +19,7 @@ namespace FirstLabMRZ
             this.image = image;
         }
 
-        public Image CompressImage(int n, int m) 
+        public Image CompressImage(int n, int m, int p) 
         {
             Bitmap bitmap = image as Bitmap;
 
@@ -26,7 +28,7 @@ namespace FirstLabMRZ
 
             ImageRectangle[] rectangles = SplitIntoRectangles(bitmap, n, m);
 
-            double[] v = rectangles[0].GetVector();
+            Calculate(rectangles, p, n * m * 3);
 
             ImagePixel[,] pixels = AssembleRectanglesToPixelMatrix(rectangles, height, width);
 
@@ -213,6 +215,19 @@ namespace FirstLabMRZ
                 {
                     pixels[i, j] = rectanglePixels[m, n];
                 }
+            }
+        }
+
+        private void Calculate(ImageRectangle[] rectangles, int p, int n) 
+        {
+            DenseMatrix weightMatrix = DenseMatrix.CreateRandom(n, p, Normal.WithMeanVariance(0.0, 0.001));
+            DenseMatrix secondWeightMatrix = (DenseMatrix)weightMatrix.Transpose();
+
+            foreach (ImageRectangle rectangle in rectangles) 
+            {
+                DenseVector vector = rectangle.GetVector();
+                DenseVector yVector = vector * weightMatrix;
+                DenseVector xSecondVector = yVector * secondWeightMatrix;
             }
         }
     }

@@ -40,6 +40,7 @@
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.compressImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.learningFactorTextBox = new System.Windows.Forms.TextBox();
@@ -50,9 +51,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.mTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.neuronsNumberTextBox = new System.Windows.Forms.TextBox();
+            this.pTextBox = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.compressImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox)).BeginInit();
@@ -156,14 +156,14 @@
             // openImageToolStripMenuItem
             // 
             this.openImageToolStripMenuItem.Name = "openImageToolStripMenuItem";
-            this.openImageToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openImageToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.openImageToolStripMenuItem.Text = "Open Image";
             this.openImageToolStripMenuItem.Click += new System.EventHandler(this.openImageToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -183,6 +183,13 @@
             this.clearToolStripMenuItem.Text = "Clear";
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
+            // compressImageToolStripMenuItem
+            // 
+            this.compressImageToolStripMenuItem.Name = "compressImageToolStripMenuItem";
+            this.compressImageToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.compressImageToolStripMenuItem.Text = "Compress image";
+            this.compressImageToolStripMenuItem.Click += new System.EventHandler(this.compressImageToolStripMenuItem_Click);
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 4;
@@ -199,7 +206,7 @@
             this.tableLayoutPanel2.Controls.Add(this.label2, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.mTextBox, 3, 1);
             this.tableLayoutPanel2.Controls.Add(this.label3, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.neuronsNumberTextBox, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.pTextBox, 1, 2);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 449);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 4;
@@ -294,13 +301,13 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "neurons number of the second layer";
             // 
-            // neuronsNumberTextBox
+            // pTextBox
             // 
-            this.neuronsNumberTextBox.Location = new System.Drawing.Point(121, 62);
-            this.neuronsNumberTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
-            this.neuronsNumberTextBox.Name = "neuronsNumberTextBox";
-            this.neuronsNumberTextBox.Size = new System.Drawing.Size(100, 20);
-            this.neuronsNumberTextBox.TabIndex = 5;
+            this.pTextBox.Location = new System.Drawing.Point(121, 62);
+            this.pTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
+            this.pTextBox.Name = "pTextBox";
+            this.pTextBox.Size = new System.Drawing.Size(100, 20);
+            this.pTextBox.TabIndex = 5;
             // 
             // openFileDialog1
             // 
@@ -308,13 +315,6 @@
             this.openFileDialog1.Filter = "JPEG Files (*.jpg)|*.jpg|PNG Files (*.png)|*.png|BMP Files (*.bmp)|*.bmp|All file" +
     "s (*.*)|*.*";
             this.openFileDialog1.Title = "Select a picture file";
-            // 
-            // compressImageToolStripMenuItem
-            // 
-            this.compressImageToolStripMenuItem.Name = "compressImageToolStripMenuItem";
-            this.compressImageToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.compressImageToolStripMenuItem.Text = "Compress image";
-            this.compressImageToolStripMenuItem.Click += new System.EventHandler(this.compressImageToolStripMenuItem_Click);
             // 
             // ImageArchiverForm
             // 
@@ -363,7 +363,7 @@
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
         private System.Windows.Forms.TextBox learningFactorTextBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox neuronsNumberTextBox;
+        private System.Windows.Forms.TextBox pTextBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox maxAllowableErrorTextBox;

@@ -25,3 +25,9 @@ d:\University\C#Projects\mrz1\FirstLabMRZ\FirstLabMRZ\obj\Debug\FirstLabMRZ.cspr
 d:\University\C#Projects\mrz1\FirstLabMRZ\FirstLabMRZ\obj\Debug\FirstLabMRZ.ImageArchiverForm.resources
 d:\University\C#Projects\mrz1\FirstLabMRZ\FirstLabMRZ\obj\Debug\FirstLabMRZ.Properties.Resources.resources
 d:\University\C#Projects\mrz1\FirstLabMRZ\FirstLabMRZ\obj\Debug\FirstLabMRZ.csproj.GenerateResource.Cache
+c:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabMRZ\bin\Debug\MathNet.Numerics.dll
+c:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabMRZ\bin\Debug\MathNet.Numerics.IO.dll
+c:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabMRZ\bin\Debug\MathNet.Numerics.pdb
+c:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabMRZ\bin\Debug\MathNet.Numerics.xml
+c:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabMRZ\bin\Debug\MathNet.Numerics.IO.pdb
+c:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabMRZ\bin\Debug\MathNet.Numerics.IO.xml
