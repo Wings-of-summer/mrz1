@@ -43,9 +43,9 @@
             this.compressImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
-            this.learningFactorTextBox = new System.Windows.Forms.TextBox();
+            this.aTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.maxAllowableErrorTextBox = new System.Windows.Forms.TextBox();
+            this.eTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.nTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,6 +53,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.pTextBox = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label6 = new System.Windows.Forms.Label();
+            this.iterationNumberTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox)).BeginInit();
@@ -198,15 +200,17 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel2.Controls.Add(this.label4, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.learningFactorTextBox, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.aTextBox, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.label5, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.maxAllowableErrorTextBox, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.eTextBox, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.label1, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.nTextBox, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.label2, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.mTextBox, 3, 1);
             this.tableLayoutPanel2.Controls.Add(this.label3, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.pTextBox, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.label6, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.iterationNumberTextBox, 1, 3);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 449);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 4;
@@ -227,14 +231,14 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "learning factor";
             // 
-            // learningFactorTextBox
+            // aTextBox
             // 
-            this.learningFactorTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
-            this.learningFactorTextBox.Location = new System.Drawing.Point(121, 0);
-            this.learningFactorTextBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.learningFactorTextBox.Name = "learningFactorTextBox";
-            this.learningFactorTextBox.Size = new System.Drawing.Size(100, 20);
-            this.learningFactorTextBox.TabIndex = 7;
+            this.aTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
+            this.aTextBox.Location = new System.Drawing.Point(121, 0);
+            this.aTextBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.aTextBox.Name = "aTextBox";
+            this.aTextBox.Size = new System.Drawing.Size(100, 20);
+            this.aTextBox.TabIndex = 7;
             // 
             // label5
             // 
@@ -246,14 +250,14 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "max allowable error";
             // 
-            // maxAllowableErrorTextBox
+            // eTextBox
             // 
-            this.maxAllowableErrorTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
-            this.maxAllowableErrorTextBox.Location = new System.Drawing.Point(121, 29);
-            this.maxAllowableErrorTextBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.maxAllowableErrorTextBox.Name = "maxAllowableErrorTextBox";
-            this.maxAllowableErrorTextBox.Size = new System.Drawing.Size(100, 20);
-            this.maxAllowableErrorTextBox.TabIndex = 9;
+            this.eTextBox.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
+            this.eTextBox.Location = new System.Drawing.Point(121, 29);
+            this.eTextBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.eTextBox.Name = "eTextBox";
+            this.eTextBox.Size = new System.Drawing.Size(100, 20);
+            this.eTextBox.TabIndex = 9;
             // 
             // label1
             // 
@@ -316,6 +320,24 @@
     "s (*.*)|*.*";
             this.openFileDialog1.Title = "Select a picture file";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(10, 89);
+            this.label6.Margin = new System.Windows.Forms.Padding(10, 2, 3, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(104, 13);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "max iteration number";
+            // 
+            // iterationNumberTextBox
+            // 
+            this.iterationNumberTextBox.Location = new System.Drawing.Point(121, 91);
+            this.iterationNumberTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
+            this.iterationNumberTextBox.Name = "iterationNumberTextBox";
+            this.iterationNumberTextBox.Size = new System.Drawing.Size(100, 20);
+            this.iterationNumberTextBox.TabIndex = 11;
+            // 
             // ImageArchiverForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -361,13 +383,15 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox mTextBox;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
-        private System.Windows.Forms.TextBox learningFactorTextBox;
+        private System.Windows.Forms.TextBox aTextBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox pTextBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox maxAllowableErrorTextBox;
+        private System.Windows.Forms.TextBox eTextBox;
         private System.Windows.Forms.ToolStripMenuItem compressImageToolStripMenuItem;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox iterationNumberTextBox;
     }
 }
 

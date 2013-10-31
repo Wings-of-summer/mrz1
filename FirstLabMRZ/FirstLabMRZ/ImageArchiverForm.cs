@@ -40,8 +40,11 @@ namespace FirstLabMRZ
             string nText = nTextBox.Text;
             string mText = mTextBox.Text;
             string pText = pTextBox.Text;
+            string aText = aTextBox.Text;
+            string eText = eTextBox.Text;
+            string iterationNumberText = iterationNumberTextBox.Text;
 
-            if (nText.Equals(String.Empty) && mText.Equals(String.Empty) && pText.Equals(String.Empty)) 
+            if (nText.Equals(String.Empty) || mText.Equals(String.Empty) || pText.Equals(String.Empty) || aText.Equals(String.Empty) || eText.Equals(String.Empty) || iterationNumberText.Equals(String.Empty)) 
             {
                 return;
             }
@@ -49,10 +52,13 @@ namespace FirstLabMRZ
             int n = Int32.Parse(nText);
             int m = Int32.Parse(mText);
             int p = Int32.Parse(pText);
+            int iterationNumber = Int32.Parse(iterationNumberText);
+            double a = Double.Parse(aText);
+            double error = Double.Parse(eText);
 
             Image image = imageBox.Image;
             ImageArchiver imageArchiver = new ImageArchiver(image);
-            compressedImageBox.Image = imageArchiver.CompressImage(n, m, p);
+            compressedImageBox.Image = imageArchiver.CompressImage(n, m, p, a, error, iterationNumber);
         }
     }
 }
