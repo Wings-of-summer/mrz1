@@ -2,6 +2,7 @@
 using MathNet.Numerics.LinearAlgebra.Double;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,13 +14,21 @@ namespace FirstLabMRZ
     {
         private const double C_MAX = 255;
         private Image image;
+        private CurrentState state { get; set; }
+
+        public class CurrentState
+        {
+            public double CurentError;
+            public int IterationNumber;
+            public Image CompressedImage;
+        }
 
         public ImageArchiver(Image image) 
         {
             this.image = image;
         }
 
-        public Image CompressImage(int n, int m, int p, double a, double e, int iterationNumber) 
+        public void CompressImage(int n, int m, int p, double a, double e, int iterationNumber, BackgroundWorker worker, DoWorkEventArgs doWorkEvent) 
         {
             Bitmap bitmap = image as Bitmap;
 
@@ -28,13 +37,17 @@ namespace FirstLabMRZ
 
             ImageRectangle[] rectangles = SplitIntoRectangles(bitmap, n, m);
 
-            Calculate(rectangles, p, n * m * 3, a, e, iterationNumber);
+            Calculate(rectangles, p, n * m * 3, a, e, iterationNumber, worker, doWorkEvent);
 
             ImagePixel[,] pixels = AssembleRectanglesToPixelMatrix(rectangles, height, width);
 
             ConvertPixelsInStandardForm(pixels, height, width);
 
-            return AssembleImageFromPixels(pixels, height, width);
+            Image compressedImage = AssembleImageFromPixels(pixels, height, width);
+
+            state.CompressedImage = compressedImage;
+
+            worker.ReportProgress(0, state);
         }
 
         private ImageRectangle[] SplitIntoRectangles(Bitmap bitmap, int n, int m) 
@@ -155,7 +168,7 @@ namespace FirstLabMRZ
         private double ConvertToStandardForm(double oldValue)
         {
             double value = Math.Abs(C_MAX * (oldValue + 1) / 2);
-            return value > C_MAX ? C_MAX : value;
+            return value > C_MAX ? C_MAX : (value < 0 ? 0 : value);
         }
 
         private Image AssembleImageFromPixels(ImagePixel[,] pixels, int height, int width) 
@@ -219,7 +232,7 @@ namespace FirstLabMRZ
             }
         }
 
-        private void Calculate(ImageRectangle[] rectangles, int p, int n, double a, double e, int iterationNumber) 
+        private void Calculate(ImageRectangle[] rectangles, int p, int n, double a, double e, int iterationNumber, BackgroundWorker worker, DoWorkEventArgs doWorkEvent) 
         {
             DenseMatrix weightMatrix = DenseMatrix.CreateRandom(n, p, Normal.WithMeanVariance(0.0, 0.001));
             DenseMatrix secondWeightMatrix = (DenseMatrix)weightMatrix.Transpose();
@@ -227,8 +240,12 @@ namespace FirstLabMRZ
             double totalError = e + 1;
             int totalIterationNumber = 0;
 
+            state = new CurrentState();
+
             while (totalError > e && totalIterationNumber < iterationNumber) 
             {
+                totalError = 0;
+
                 foreach (ImageRectangle rectangle in rectangles)
                 {
                     DenseVector xVector = rectangle.GetVector();
@@ -258,6 +275,12 @@ namespace FirstLabMRZ
                 }
 
                 totalIterationNumber++;
+
+                state.CurentError = totalError;
+                state.IterationNumber = totalIterationNumber;
+                state.CompressedImage = null;
+
+                worker.ReportProgress(0, state);
             }
 
             foreach (ImageRectangle rectangle in rectangles) 
