@@ -30,6 +30,11 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.iterationLabel = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.errorLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.imageBox = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -57,20 +62,15 @@
             this.iterationNumberTextBox = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.errorLabel = new System.Windows.Forms.Label();
-            this.iterationLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.compressedImageBox)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -104,6 +104,63 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(472, 116);
             this.flowLayoutPanel1.TabIndex = 2;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+            this.tableLayoutPanel3.Controls.Add(this.iterationLabel, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label7, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label8, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.errorLabel, 1, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(-3, 3);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 4;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(472, 116);
+            this.tableLayoutPanel3.TabIndex = 7;
+            // 
+            // iterationLabel
+            // 
+            this.iterationLabel.AutoSize = true;
+            this.iterationLabel.Location = new System.Drawing.Point(121, 34);
+            this.iterationLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
+            this.iterationLabel.Name = "iterationLabel";
+            this.iterationLabel.Size = new System.Drawing.Size(0, 13);
+            this.iterationLabel.TabIndex = 13;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(85, 5);
+            this.label7.Margin = new System.Windows.Forms.Padding(85, 5, 3, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(29, 13);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Error";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(32, 31);
+            this.label8.Margin = new System.Windows.Forms.Padding(32, 2, 3, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(83, 13);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Iteration number";
+            // 
+            // errorLabel
+            // 
+            this.errorLabel.AutoSize = true;
+            this.errorLabel.Location = new System.Drawing.Point(121, 5);
+            this.errorLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
+            this.errorLabel.Name = "errorLabel";
+            this.errorLabel.Size = new System.Drawing.Size(0, 13);
+            this.errorLabel.TabIndex = 12;
             // 
             // panel1
             // 
@@ -256,6 +313,7 @@
             this.aTextBox.Name = "aTextBox";
             this.aTextBox.Size = new System.Drawing.Size(100, 20);
             this.aTextBox.TabIndex = 7;
+            this.aTextBox.Text = "0,0005";
             // 
             // label5
             // 
@@ -275,6 +333,7 @@
             this.eTextBox.Name = "eTextBox";
             this.eTextBox.Size = new System.Drawing.Size(100, 20);
             this.eTextBox.TabIndex = 9;
+            this.eTextBox.Text = "0,1";
             // 
             // label1
             // 
@@ -293,6 +352,7 @@
             this.nTextBox.Name = "nTextBox";
             this.nTextBox.Size = new System.Drawing.Size(100, 20);
             this.nTextBox.TabIndex = 1;
+            this.nTextBox.Text = "4";
             // 
             // label2
             // 
@@ -311,6 +371,7 @@
             this.mTextBox.Name = "mTextBox";
             this.mTextBox.Size = new System.Drawing.Size(100, 20);
             this.mTextBox.TabIndex = 3;
+            this.mTextBox.Text = "4";
             // 
             // label3
             // 
@@ -329,6 +390,7 @@
             this.pTextBox.Name = "pTextBox";
             this.pTextBox.Size = new System.Drawing.Size(100, 20);
             this.pTextBox.TabIndex = 5;
+            this.pTextBox.Text = "12";
             // 
             // label6
             // 
@@ -347,6 +409,7 @@
             this.iterationNumberTextBox.Name = "iterationNumberTextBox";
             this.iterationNumberTextBox.Size = new System.Drawing.Size(100, 20);
             this.iterationNumberTextBox.TabIndex = 11;
+            this.iterationNumberTextBox.Text = "50";
             // 
             // openFileDialog1
             // 
@@ -363,63 +426,6 @@
             this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
             this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
             // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
-            this.tableLayoutPanel3.Controls.Add(this.iterationLabel, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.label7, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label8, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.errorLabel, 1, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(-3, 3);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 4;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(472, 116);
-            this.tableLayoutPanel3.TabIndex = 7;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(85, 5);
-            this.label7.Margin = new System.Windows.Forms.Padding(85, 5, 3, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(29, 13);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Error";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(32, 31);
-            this.label8.Margin = new System.Windows.Forms.Padding(32, 2, 3, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(83, 13);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "Iteration number";
-            // 
-            // errorLabel
-            // 
-            this.errorLabel.AutoSize = true;
-            this.errorLabel.Location = new System.Drawing.Point(121, 5);
-            this.errorLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
-            this.errorLabel.Name = "errorLabel";
-            this.errorLabel.Size = new System.Drawing.Size(0, 13);
-            this.errorLabel.TabIndex = 12;
-            // 
-            // iterationLabel
-            // 
-            this.iterationLabel.AutoSize = true;
-            this.iterationLabel.Location = new System.Drawing.Point(121, 34);
-            this.iterationLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
-            this.iterationLabel.Name = "iterationLabel";
-            this.iterationLabel.Size = new System.Drawing.Size(0, 13);
-            this.iterationLabel.TabIndex = 13;
-            // 
             // ImageArchiverForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -432,6 +438,8 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox)).EndInit();
@@ -442,8 +450,6 @@
             this.menuStrip1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
 
         }

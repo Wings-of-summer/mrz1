@@ -68,7 +68,12 @@ namespace FirstLabMRZ
             string eText = eTextBox.Text;
             string iterationNumberText = iterationNumberTextBox.Text;
 
-            if (nText.Equals(String.Empty) || mText.Equals(String.Empty) || pText.Equals(String.Empty) || aText.Equals(String.Empty) || eText.Equals(String.Empty) || iterationNumberText.Equals(String.Empty))
+            if (nText.Equals(String.Empty) || 
+                mText.Equals(String.Empty) || 
+                pText.Equals(String.Empty) || 
+                aText.Equals(String.Empty) || 
+                eText.Equals(String.Empty) || 
+                iterationNumberText.Equals(String.Empty))
             {
                 return;
             }

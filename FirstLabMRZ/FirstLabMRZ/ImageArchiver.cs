@@ -1,5 +1,4 @@
-﻿using MathNet.Numerics.Distributions;
-using MathNet.Numerics.LinearAlgebra.Double;
+﻿using ILNumerics;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DotNumerics.LinearAlgebra;
+using DotNumerics;
 
 namespace FirstLabMRZ
 {
@@ -232,46 +233,58 @@ namespace FirstLabMRZ
             }
         }
 
-        private void Calculate(ImageRectangle[] rectangles, int p, int n, double a, double e, int iterationNumber, BackgroundWorker worker, DoWorkEventArgs doWorkEvent) 
+        private void Calculate(ImageRectangle[] rectangles, int p, int n, double a, double e, int iterationNumber, BackgroundWorker worker, DoWorkEventArgs doWorkEvent)
         {
-            DenseMatrix weightMatrix = DenseMatrix.CreateRandom(n, p, Normal.WithMeanVariance(0.0, 0.001));
-            DenseMatrix secondWeightMatrix = (DenseMatrix)weightMatrix.Transpose();
+            Matrix weightMatrix = Matrix.Random(n, p) * 0.1;
+            Matrix secondWeightMatrix = weightMatrix.Transpose();
 
             double totalError = e + 1;
             int totalIterationNumber = 0;
 
             state = new CurrentState();
 
-            while (totalError > e && totalIterationNumber < iterationNumber) 
+            while (totalError > e && totalIterationNumber < iterationNumber)
             {
                 totalError = 0;
 
                 foreach (ImageRectangle rectangle in rectangles)
                 {
-                    DenseVector xVector = rectangle.GetVector();
-                    DenseMatrix xMatrix = (DenseMatrix)xVector.ToRowMatrix();
+                    Matrix xMatrix = new Matrix(1, n);
+                    
+                    double[,] matrix = new double[1, n];
 
-                    DenseMatrix yMatrix = xMatrix * weightMatrix;
-                    DenseMatrix xSecondMatrix = yMatrix * secondWeightMatrix;
-                    DenseMatrix deltaXMatrix = xSecondMatrix - xMatrix;
+                    
 
-                    weightMatrix = weightMatrix - a * (DenseMatrix)xMatrix.Transpose() * deltaXMatrix * (DenseMatrix)secondWeightMatrix.Transpose();
-                    secondWeightMatrix = secondWeightMatrix - a * (DenseMatrix)yMatrix.Transpose() * deltaXMatrix;
+                    matrix[] = rectangle.GetVector();
+                    Matrix matrix1 = new Matrix(matrix);
+
+
+                    Matrix xSecondMatrix = xVector * weightMatrix;
+
+                    //DenseVector xVector = rectangle.GetVector();
+                    //DenseMatrix xMatrix = (DenseMatrix)xVector.ToRowMatrix();
+
+                    //DenseMatrix yMatrix = xMatrix * weightMatrix;
+                    //DenseMatrix xSecondMatrix = yMatrix * secondWeightMatrix;
+                    //DenseMatrix deltaXMatrix = xSecondMatrix - xMatrix;
+
+                    //weightMatrix = weightMatrix - a * (DenseMatrix)xMatrix.Transpose() * deltaXMatrix * (DenseMatrix)secondWeightMatrix.Transpose();
+                    //secondWeightMatrix = secondWeightMatrix - a * (DenseMatrix)yMatrix.Transpose() * deltaXMatrix;
                 }
 
                 foreach (ImageRectangle rectangle in rectangles)
                 {
-                    DenseVector xVector = rectangle.GetVector();
-                    DenseMatrix xMatrix = (DenseMatrix)xVector.ToRowMatrix();
+                    //DenseVector xVector = rectangle.GetVector();
+                    //DenseMatrix xMatrix = (DenseMatrix)xVector.ToRowMatrix();
 
-                    DenseMatrix yMatrix = xMatrix * weightMatrix;
-                    DenseMatrix xSecondMatrix = yMatrix * secondWeightMatrix;
-                    DenseMatrix deltaXMatrix = xSecondMatrix - xMatrix;
+                    //DenseMatrix yMatrix = xMatrix * weightMatrix;
+                    //DenseMatrix xSecondMatrix = yMatrix * secondWeightMatrix;
+                    //DenseMatrix deltaXMatrix = xSecondMatrix - xMatrix;
 
-                    for (int j = 0; j < deltaXMatrix.ColumnCount; j++)
-                    {
-                        totalError += deltaXMatrix.At(0, j) * deltaXMatrix.At(0, j);
-                    }
+                    //for (int j = 0; j < deltaXMatrix.ColumnCount; j++)
+                    //{
+                    //    totalError += deltaXMatrix.At(0, j) * deltaXMatrix.At(0, j);
+                    //}
                 }
 
                 totalIterationNumber++;
@@ -283,16 +296,79 @@ namespace FirstLabMRZ
                 worker.ReportProgress(0, state);
             }
 
-            foreach (ImageRectangle rectangle in rectangles) 
+            foreach (ImageRectangle rectangle in rectangles)
             {
-                DenseVector xVector = rectangle.GetVector();
-                DenseMatrix xMatrix = (DenseMatrix)xVector.ToRowMatrix();
+                //DenseVector xVector = rectangle.GetVector();
+                //DenseMatrix xMatrix = (DenseMatrix)xVector.ToRowMatrix();
 
-                DenseMatrix yMatrix = xMatrix * weightMatrix;
-                DenseMatrix xSecondMatrix = yMatrix * secondWeightMatrix;
+                //DenseMatrix yMatrix = xMatrix * weightMatrix;
+                //DenseMatrix xSecondMatrix = yMatrix * secondWeightMatrix;
 
-                rectangle.SetPixelMatrixFromVector(xSecondMatrix.Values);
+                //rectangle.SetPixelMatrixFromVector(xSecondMatrix.Values);
             }
         }
+
+        //private void Calculate(ImageRectangle[] rectangles, int p, int n, double a, double e, int iterationNumber, BackgroundWorker worker, DoWorkEventArgs doWorkEvent)
+        //{
+        //    DenseMatrix weightMatrix = DenseMatrix.CreateRandom(n, p, Normal.WithMeanVariance(0.0, 0.001));
+        //    DenseMatrix secondWeightMatrix = (DenseMatrix)weightMatrix.Transpose();
+
+        //    double totalError = e + 1;
+        //    int totalIterationNumber = 0;
+
+        //    state = new CurrentState();
+
+        //    while (totalError > e && totalIterationNumber < iterationNumber)
+        //    {
+        //        totalError = 0;
+
+        //        foreach (ImageRectangle rectangle in rectangles)
+        //        {
+        //            DenseVector xVector = rectangle.GetVector();
+        //            DenseMatrix xMatrix = (DenseMatrix)xVector.ToRowMatrix();
+
+        //            DenseMatrix yMatrix = xMatrix * weightMatrix;
+        //            DenseMatrix xSecondMatrix = yMatrix * secondWeightMatrix;
+        //            DenseMatrix deltaXMatrix = xSecondMatrix - xMatrix;
+
+        //            weightMatrix = weightMatrix - a * (DenseMatrix)xMatrix.Transpose() * deltaXMatrix * (DenseMatrix)secondWeightMatrix.Transpose();
+        //            secondWeightMatrix = secondWeightMatrix - a * (DenseMatrix)yMatrix.Transpose() * deltaXMatrix;
+        //        }
+
+        //        foreach (ImageRectangle rectangle in rectangles)
+        //        {
+        //            DenseVector xVector = rectangle.GetVector();
+        //            DenseMatrix xMatrix = (DenseMatrix)xVector.ToRowMatrix();
+
+        //            DenseMatrix yMatrix = xMatrix * weightMatrix;
+        //            DenseMatrix xSecondMatrix = yMatrix * secondWeightMatrix;
+        //            DenseMatrix deltaXMatrix = xSecondMatrix - xMatrix;
+
+        //            for (int j = 0; j < deltaXMatrix.ColumnCount; j++)
+        //            {
+        //                totalError += deltaXMatrix.At(0, j) * deltaXMatrix.At(0, j);
+        //            }
+        //        }
+
+        //        totalIterationNumber++;
+
+        //        state.CurentError = totalError;
+        //        state.IterationNumber = totalIterationNumber;
+        //        state.CompressedImage = null;
+
+        //        worker.ReportProgress(0, state);
+        //    }
+
+        //    foreach (ImageRectangle rectangle in rectangles)
+        //    {
+        //        DenseVector xVector = rectangle.GetVector();
+        //        DenseMatrix xMatrix = (DenseMatrix)xVector.ToRowMatrix();
+
+        //        DenseMatrix yMatrix = xMatrix * weightMatrix;
+        //        DenseMatrix xSecondMatrix = yMatrix * secondWeightMatrix;
+
+        //        rectangle.SetPixelMatrixFromVector(xSecondMatrix.Values);
+        //    }
+        //}
     }
 }
