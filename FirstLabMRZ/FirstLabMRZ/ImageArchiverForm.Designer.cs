@@ -352,7 +352,7 @@
             this.nTextBox.Name = "nTextBox";
             this.nTextBox.Size = new System.Drawing.Size(100, 20);
             this.nTextBox.TabIndex = 1;
-            this.nTextBox.Text = "4";
+            this.nTextBox.Text = "8";
             // 
             // label2
             // 
@@ -371,7 +371,7 @@
             this.mTextBox.Name = "mTextBox";
             this.mTextBox.Size = new System.Drawing.Size(100, 20);
             this.mTextBox.TabIndex = 3;
-            this.mTextBox.Text = "4";
+            this.mTextBox.Text = "8";
             // 
             // label3
             // 

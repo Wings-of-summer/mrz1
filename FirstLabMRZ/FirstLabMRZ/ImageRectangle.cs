@@ -42,6 +42,28 @@ namespace FirstLabMRZ
             return vector;
         }
 
+        public double[,] GetStandartVector()
+        {
+            double[,] vector = new double[1, N * M * 3];
+
+            int n = 0;
+
+            for (int j = 0; j < N; j++)
+            {
+                for (int i = 0; i < M; i++)
+                {
+                    ImagePixel pixel = PixelsMatrix[i, j];
+                    vector[0, n] = pixel.R;
+                    vector[0, n + 1] = pixel.G;
+                    vector[0, n + 2] = pixel.B;
+
+                    n += 3;
+                }
+            }
+
+            return vector;
+        }
+
         public void SetPixelMatrixFromVector(double[] vector) 
         {
             int n = 0;

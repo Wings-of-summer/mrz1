@@ -61,6 +61,13 @@ namespace FirstLabMRZ
 
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
+            ImageArchiver imageArchiver = (ImageArchiver)e.Argument;
+
+            imageArchiver.CompressImage(backgroundWorker, e);
+        }
+
+        private void StartThread()
+        {
             string nText = nTextBox.Text;
             string mText = mTextBox.Text;
             string pText = pTextBox.Text;
@@ -68,11 +75,11 @@ namespace FirstLabMRZ
             string eText = eTextBox.Text;
             string iterationNumberText = iterationNumberTextBox.Text;
 
-            if (nText.Equals(String.Empty) || 
-                mText.Equals(String.Empty) || 
-                pText.Equals(String.Empty) || 
-                aText.Equals(String.Empty) || 
-                eText.Equals(String.Empty) || 
+            if (nText.Equals(String.Empty) ||
+                mText.Equals(String.Empty) ||
+                pText.Equals(String.Empty) ||
+                aText.Equals(String.Empty) ||
+                eText.Equals(String.Empty) ||
                 iterationNumberText.Equals(String.Empty))
             {
                 return;
@@ -83,17 +90,10 @@ namespace FirstLabMRZ
             int p = Int32.Parse(pText);
             int iterationNumber = Int32.Parse(iterationNumberText);
             double a = Double.Parse(aText);
-            double error = Double.Parse(eText);
+            double e = Double.Parse(eText);
 
-            ImageArchiver imageArchiver = (ImageArchiver)e.Argument;
-
-            imageArchiver.CompressImage(n, m, p, a, error, iterationNumber, backgroundWorker, e);
-        }
-
-        private void StartThread()
-        {
             Image image = imageBox.Image;
-            ImageArchiver imageArchiver = new ImageArchiver(image);
+            ImageArchiver imageArchiver = new ImageArchiver(image, n, m, p, a, e, iterationNumber);
 
             backgroundWorker.RunWorkerAsync(imageArchiver);
         }
