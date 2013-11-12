@@ -12,6 +12,10 @@ namespace FirstLabMRZ
 {
     public partial class ImageArchiverForm : Form
     {
+        private double compressing;
+        private string firstWeightMatrix;
+        private string secondWeighrMatrix;
+
         public ImageArchiverForm()
         {
             InitializeComponent();
@@ -54,6 +58,19 @@ namespace FirstLabMRZ
             if (state.CompressedImage != null) 
             {
                 compressedImageBox.Image = state.CompressedImage;
+                nTextBox.Enabled = true;
+                mTextBox.Enabled = true;
+                pTextBox.Enabled = true;
+                aTextBox.Enabled = true;
+                eTextBox.Enabled = true;
+                iterationNumberTextBox.Enabled = true;
+
+                compressing = state.Compressing;
+                firstWeightMatrix = state.FirstWeightMatrix;
+                secondWeighrMatrix = state.SecondWeightMatrix;
+
+                stopButton.Enabled = false;
+                resultToolStripMenuItem.Enabled = true;
             }
             errorLabel.Text = state.CurentError.ToString();
             iterationLabel.Text = state.IterationNumber.ToString();
@@ -92,10 +109,31 @@ namespace FirstLabMRZ
             double a = Double.Parse(aText);
             double e = Double.Parse(eText);
 
+            nTextBox.Enabled = false;
+            mTextBox.Enabled = false;
+            pTextBox.Enabled = false;
+            aTextBox.Enabled = false;
+            eTextBox.Enabled = false;
+            iterationNumberTextBox.Enabled = false;
+
+            stopButton.Enabled = true;
+
             Image image = imageBox.Image;
             ImageArchiver imageArchiver = new ImageArchiver(image, n, m, p, a, e, iterationNumber);
 
             backgroundWorker.RunWorkerAsync(imageArchiver);
+        }
+
+        private void stopButton_Click(object sender, EventArgs e)
+        {
+            stopButton.Enabled = false;
+            this.backgroundWorker.CancelAsync();
+        }
+
+        private void resultToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ResultForm resultForm = new ResultForm(errorLabel.Text, iterationLabel.Text, firstWeightMatrix, secondWeighrMatrix, compressing.ToString());
+            resultForm.ShowDialog();
         }
     }
 }

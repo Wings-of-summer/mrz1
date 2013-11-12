@@ -25,7 +25,10 @@ namespace FirstLabMRZ
         public class CurrentState
         {
             public double CurentError;
+            public double Compressing;
             public int IterationNumber;
+            public string FirstWeightMatrix;
+            public string SecondWeightMatrix;
             public Image CompressedImage;
         }
 
@@ -246,55 +249,61 @@ namespace FirstLabMRZ
 
         private void TeachNeuralNetwork(ImageRectangle[] rectangles, BackgroundWorker worker, DoWorkEventArgs doWorkEvent)
         {
-            int N = m * n * 3;
-            double[,] matrix = new double[N, p];
+            int N = n * m * 3;
+
+            RectangularMatrix weightMatrix = new RectangularMatrix(N, p);
 
             Random rand = new Random();
             for (int i = 0; i < N; i++)
             {
                 for (int j = 0; j < p; j++)
                 {
-                    matrix[i, j] = rand.NextDouble() * 0.1;
+                    weightMatrix[i, j] = rand.NextDouble() * 0.1;
                 }
             }
 
-            Matrix weightMatrix = new Matrix(matrix, N, p);
-
-            Matrix secondWeightMatrix = weightMatrix.Transpose();
+            RectangularMatrix secondWeightMatrix = weightMatrix.Transpose();
 
             double totalError = e + 1;
             int totalIterationNumber = 0;
 
             state = new CurrentState();
 
+            RowVector[] vectors = new RowVector[rectangles.Length];
+
+            for (int i = 0; i < rectangles.Length; i++) 
+            {
+                vectors[i] = new RowVector(((ImageRectangle)rectangles.GetValue(i)).GetVector());
+            }
+
             while (totalError > e && totalIterationNumber < iterationNumber)
             {
                 totalError = 0;
 
-                foreach (ImageRectangle rectangle in rectangles)
+                for (int i = 0; i < rectangles.Length; i++)
                 {
-                    Matrix xVector = new Matrix(rectangle.GetStandartVector(), 1, N);
+                    RowVector xVector = vectors[i];
 
-                    Matrix yVector = xVector.Multiply(weightMatrix);
-                    Matrix xSecondVector = yVector.Multiply(secondWeightMatrix);
-                    Matrix deltaXVector = xSecondVector.Subtract(xVector);
+                    RowVector yVector = xVector * weightMatrix;
+                    RowVector xSecondVector = yVector * secondWeightMatrix;
+                    RowVector deltaXVector = xSecondVector - xVector;
 
-                    weightMatrix = weightMatrix.Subtract(xVector.Transpose().Multiply(a).Multiply(deltaXVector).Multiply(secondWeightMatrix.Transpose()));
-                    secondWeightMatrix = secondWeightMatrix.Subtract(yVector.Transpose().Multiply(a).Multiply(deltaXVector));
+                    weightMatrix = weightMatrix - a * xVector.Transpose() * deltaXVector * secondWeightMatrix.Transpose();
+                    secondWeightMatrix = secondWeightMatrix - a * yVector.Transpose() * deltaXVector;
                 }
 
-                foreach (ImageRectangle rectangle in rectangles)
+                for (int i = 0; i < rectangles.Length; i++)
                 {
 
-                    Matrix xVector = new Matrix(rectangle.GetStandartVector(), 1, N);
+                    RowVector xVector = vectors[i];
 
-                    Matrix yVector = xVector.Multiply(weightMatrix);
-                    Matrix xSecondVector = yVector.Multiply(secondWeightMatrix);
-                    Matrix deltaXVector = xSecondVector.Subtract(xVector);
+                    RowVector yVector = xVector * weightMatrix;
+                    RowVector xSecondVector = yVector * secondWeightMatrix;
+                    RowVector deltaXVector = xSecondVector - xVector;
 
-                    for (int j = 0; j < N; j++)
+                    for (int j = 0; j < deltaXVector.ColumnCount; j++)
                     {
-                        totalError += deltaXVector.Get(0, j) * deltaXVector.Get(0, j);
+                        totalError += deltaXVector[0, j] * deltaXVector[0, j];
                     }
                 }
 
@@ -302,20 +311,48 @@ namespace FirstLabMRZ
 
                 state.CurentError = totalError;
                 state.IterationNumber = totalIterationNumber;
-                state.CompressedImage = null;
 
                 worker.ReportProgress(0, state);
+
+                if (worker.CancellationPending)
+                {
+                    doWorkEvent.Cancel = true;
+                    break;
+                }
             }
 
-            foreach (ImageRectangle rectangle in rectangles)
+            for (int i = 0; i < rectangles.Length; i++)
             {
-                Matrix xVector = new Matrix(rectangle.GetStandartVector(), 1, N);
+                RowVector xVector = vectors[i];
 
-                Matrix yVector = xVector.Multiply(weightMatrix);
-                Matrix xSecondVector = yVector.Multiply(secondWeightMatrix);
+                RowVector yVector = xVector * weightMatrix;
+                RowVector xSecondVector = yVector * secondWeightMatrix;
 
-                rectangle.SetPixelMatrixFromVector(xSecondVector.GetElements());
+                ((ImageRectangle)rectangles.GetValue(i)).SetPixelMatrixFromVector(xSecondVector.ToArray());
             }
+
+            state.Compressing = CalculateCompressing(rectangles.Length, N);
+            state.FirstWeightMatrix = GetMatrixString(weightMatrix);
+            state.SecondWeightMatrix = GetMatrixString(secondWeightMatrix);
+        }
+
+        private double CalculateCompressing(double L, double N) 
+        {
+            return ((N + L) * (double)p + 2) / (N * L);
+        }
+
+        private string GetMatrixString(RectangularMatrix matrix) 
+        {
+            StringBuilder builder = new StringBuilder();
+
+            for (int i = 0; i < matrix.RowCount; i++) 
+            {
+                RowVector rowVector = matrix.Row(i);
+                string elements =String.Join(", ", rowVector.ToArray().Select(element => element.ToString()).ToArray());
+                builder.Append("[" + elements + "]\r");
+            }
+
+            return builder.ToString();
         }
     }
 }

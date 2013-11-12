@@ -62,6 +62,7 @@
             this.iterationNumberTextBox = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.stopButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -114,6 +115,7 @@
             this.tableLayoutPanel3.Controls.Add(this.label7, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.label8, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.errorLabel, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.stopButton, 0, 2);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(-3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 4;
@@ -262,9 +264,11 @@
             // 
             // resultToolStripMenuItem
             // 
+            this.resultToolStripMenuItem.Enabled = false;
             this.resultToolStripMenuItem.Name = "resultToolStripMenuItem";
             this.resultToolStripMenuItem.Size = new System.Drawing.Size(51, 16);
             this.resultToolStripMenuItem.Text = "Result";
+            this.resultToolStripMenuItem.Click += new System.EventHandler(this.resultToolStripMenuItem_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -313,7 +317,7 @@
             this.aTextBox.Name = "aTextBox";
             this.aTextBox.Size = new System.Drawing.Size(100, 20);
             this.aTextBox.TabIndex = 7;
-            this.aTextBox.Text = "0,0005";
+            this.aTextBox.Text = "0.0005";
             // 
             // label5
             // 
@@ -333,7 +337,7 @@
             this.eTextBox.Name = "eTextBox";
             this.eTextBox.Size = new System.Drawing.Size(100, 20);
             this.eTextBox.TabIndex = 9;
-            this.eTextBox.Text = "0,1";
+            this.eTextBox.Text = "0.1";
             // 
             // label1
             // 
@@ -426,6 +430,18 @@
             this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
             this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
             // 
+            // stopButton
+            // 
+            this.stopButton.Enabled = false;
+            this.stopButton.Location = new System.Drawing.Point(40, 61);
+            this.stopButton.Margin = new System.Windows.Forms.Padding(40, 3, 3, 3);
+            this.stopButton.Name = "stopButton";
+            this.stopButton.Size = new System.Drawing.Size(75, 23);
+            this.stopButton.TabIndex = 14;
+            this.stopButton.Text = "Stop";
+            this.stopButton.UseVisualStyleBackColor = true;
+            this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
+            // 
             // ImageArchiverForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -490,6 +506,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label errorLabel;
+        private System.Windows.Forms.Button stopButton;
     }
 }
 

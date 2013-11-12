@@ -22,3 +22,12 @@ d:\University\C#Projects\mrz1\FirstLabMRZ\FirstLabMRZ\obj\Release\FirstLabMRZ.cs
 d:\University\C#Projects\mrz1\FirstLabMRZ\FirstLabMRZ\bin\Release\DotNumerics.dll
 d:\University\C#Projects\mrz1\FirstLabMRZ\FirstLabMRZ\bin\Release\DotNumerics.pdb
 d:\University\C#Projects\mrz1\FirstLabMRZ\FirstLabMRZ\bin\Release\DotNumerics.xml
+c:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabMRZ\bin\Release\FirstLabMRZ.exe.config
+c:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabMRZ\bin\Release\FirstLabMRZ.exe
+c:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabMRZ\bin\Release\FirstLabMRZ.pdb
+c:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabMRZ\obj\Release\FirstLabMRZ.ImageArchiverForm.resources
+c:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabMRZ\obj\Release\FirstLabMRZ.Properties.Resources.resources
+c:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabMRZ\obj\Release\FirstLabMRZ.ResultForm.resources
+c:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabMRZ\obj\Release\FirstLabMRZ.csproj.GenerateResource.Cache
+c:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabMRZ\obj\Release\FirstLabMRZ.exe
+c:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabMRZ\obj\Release\FirstLabMRZ.pdb
