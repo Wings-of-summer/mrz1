@@ -348,8 +348,8 @@ namespace FirstLabMRZ
             for (int i = 0; i < matrix.RowCount; i++) 
             {
                 RowVector rowVector = matrix.Row(i);
-                string elements =String.Join(", ", rowVector.ToArray().Select(element => element.ToString()).ToArray());
-                builder.Append("[" + elements + "]\r");
+                string elements =String.Join(", ", rowVector.ToArray().Select(element => Math.Round(element, 4).ToString()).ToArray());
+                builder.Append("[" + elements + "]" + Environment.NewLine);
             }
 
             return builder.ToString();

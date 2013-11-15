@@ -31,3 +31,4 @@ c:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabMRZ\obj\Release\FirstLabMRZ.ResultForm.res
 c:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabMRZ\obj\Release\FirstLabMRZ.csproj.GenerateResource.Cache
 c:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabMRZ\obj\Release\FirstLabMRZ.exe
 c:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabMRZ\obj\Release\FirstLabMRZ.pdb
+c:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabMRZ\obj\Release\FirstLabMRZ.csprojResolveAssemblyReference.cache
