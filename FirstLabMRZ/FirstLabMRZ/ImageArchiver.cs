@@ -3,13 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace FirstLabMRZ
 {
-    class ImageArchiver
+    public class ImageArchiver
     {
         private const double C_MAX = 255;
         private Image image;
@@ -43,7 +45,7 @@ namespace FirstLabMRZ
             this.iterationNumber = iterationNumber;
         }
 
-        public void CompressImage(BackgroundWorker worker, DoWorkEventArgs doWorkEvent) 
+        public void CompressImage(BackgroundWorker worker, DoWorkEventArgs doWorkEvent, bool test) 
         {
             Bitmap bitmap = image as Bitmap;
 
@@ -52,7 +54,7 @@ namespace FirstLabMRZ
 
             ImageRectangle[] rectangles = SplitIntoRectangles(bitmap);
 
-            TeachNeuralNetwork(rectangles, worker, doWorkEvent);
+            TeachNeuralNetwork(rectangles, worker, doWorkEvent, test);
 
             ImagePixel[,] pixels = AssembleRectanglesToPixelMatrix(rectangles, height, width);
 
@@ -62,7 +64,7 @@ namespace FirstLabMRZ
 
             state.CompressedImage = compressedImage;
 
-            worker.ReportProgress(0, state);
+            if (!test) worker.ReportProgress(0, state);
         }
 
         private ImageRectangle[] SplitIntoRectangles(Bitmap bitmap) 
@@ -247,7 +249,7 @@ namespace FirstLabMRZ
             }
         }
 
-        private void TeachNeuralNetwork(ImageRectangle[] rectangles, BackgroundWorker worker, DoWorkEventArgs doWorkEvent)
+        private void TeachNeuralNetwork(ImageRectangle[] rectangles, BackgroundWorker worker, DoWorkEventArgs doWorkEvent, bool test)
         {
             int N = n * m * 3;
 
@@ -312,12 +314,15 @@ namespace FirstLabMRZ
                 state.CurentError = totalError;
                 state.IterationNumber = totalIterationNumber;
 
-                worker.ReportProgress(0, state);
-
-                if (worker.CancellationPending)
+                if (!test) 
                 {
-                    doWorkEvent.Cancel = true;
-                    break;
+                    worker.ReportProgress(0, state);
+
+                    if (worker.CancellationPending)
+                    {
+                        doWorkEvent.Cancel = true;
+                        break;
+                    }
                 }
             }
 

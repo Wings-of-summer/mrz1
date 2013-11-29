@@ -1,0 +1,7 @@
+C:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabTest\obj\Release\FirstLabTest.csprojResolveAssemblyReference.cache
+C:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabTest\bin\Release\FirstLabTest.dll
+C:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabTest\bin\Release\FirstLabTest.pdb
+C:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabTest\bin\Release\FirstLabMRZ.exe
+C:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabTest\bin\Release\FirstLabMRZ.pdb
+C:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabTest\obj\Release\FirstLabTest.dll
+C:\Asya\Labs\mrz1\FirstLabMRZ\FirstLabTest\obj\Release\FirstLabTest.pdb

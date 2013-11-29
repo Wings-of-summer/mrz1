@@ -80,7 +80,7 @@ namespace FirstLabMRZ
         {
             ImageArchiver imageArchiver = (ImageArchiver)e.Argument;
 
-            imageArchiver.CompressImage(backgroundWorker, e);
+            imageArchiver.CompressImage(backgroundWorker, e, false);
         }
 
         private void StartThread()
